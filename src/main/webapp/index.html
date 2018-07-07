@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>媒体查询练习</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div id="all">
+		<!-- PC导航栏 -->
+		<div class = "navbar">
+			<div class="nav-item-left">首页</div>
+			<div class="nav-item-left">Java</div>
+			<div class="nav-item-left">C语言</div>
+			<div class="nav-item-left">C++</div>
+			<div class="nav-item-left">Python</div>
+			<div class="nav-item-left">CSS</div>
+			<div class="nav-item-right">登录</div>
+			<div class="nav-item-right">注册</div>
+
+		</div>
+
+	<!-- 手机导航栏 -->
+		<div class="mobile-navbar">
+			<details>
+				<summary>
+					<div>
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+						  <line x1="0" y1="5" x2="40" y2="5" style="stroke:white;stroke-width:3" />
+						  <line x1="0" y1="15" x2="40" y2="15" style="stroke:white;stroke-width:3" />
+						  <line x1="0" y1="25" x2="40" y2="25" style="stroke:white;stroke-width:3" />
+						</svg>
+					</div>
+				</summary>
+				<div class="nav-item-left">首页</div>
+				<div class="nav-item-left">Java</div>
+				<div class="nav-item-left">C语言</div>
+				<div class="nav-item-left">C++</div>
+				<div class="nav-item-left">Python</div>
+				<div class="nav-item-left">CSS</div>
+				<div class="nav-item-right">登录</div>
+				<div class="nav-item-right">注册</div>
+			</details>
+		</div>
+
+		<br />
+		<hr />
+
+		<!-- 中间的主体内容 -->
+		<div class = "content">
+
+			<!-- 左边的信息显示 -->
+			<div class="content-left">
+				<div class="username">
+					Leetp
+				</div>
+				<div class="head_portrait content-left-commit">
+					头像
+				</div>
+				<div class="contact_info content-left-commit">
+					<h5>联系方式</h5>
+				</div>
+				<div class="lastest_article content-left-commit">
+					<h5>最新文章</h5>
+          <div class = "lastest_article_list">
+            <ol>
+              <li v-for = "title in lastest_article"><a :href="title.link">{{title.title}}</a></li>
+            </ol>
+          </div>
+				</div>
+
+			</div>
+
+			<!-- 内容显示 -->
+			<div class="content-right">
+        <div class="sort_article">
+
+          <div class="sort_by_time"><a href="#">按更新时间↓</a></div>
+          <div class="sort_by_pageview"><a href="#">按访问量↓</a></div>
+          <div class="sort_title">排序：</div>
+        </div>
+        <div class="article-list">
+          <ul>
+            <li  v-for = "article in result">
+				<a :href="article.href" target = "_blank">
+				  <div class="article_item">
+					<h3 class="article_header">{{article.title}}</h3>
+					<p class="article_description">
+					  {{article.summary}}
+					</p>
+					<div class="article_release_time">
+
+					  <div class = "article_release_time-item">
+						<span>发布时间：</span>
+						<span class="time">{{article.createTime}}</span>
+					  </div>
+
+					  <div class = "article_release_time-item">
+						<span>访问量：</span>
+						<span class="pageview_count">{{article.pageview}}次</span>
+					  </div>
+					</div>
+				  </div>
+				</a>
+            </li>
+          </ul>
+
+		<center>
+			<div class = "skip_page">
+				<ul>
+					<li class = "page_pre"><a href="#" :click = "subPage()">上一页</a></li>
+					<li class = "page_next"><a href="#" :click = "addPage()">下一页</a></li>
+				</ul>
+			</div>
+		</center>
+
+        </div>
+			</div>
+		</div>
+
+  </div>
+
+</body>
+</html>
